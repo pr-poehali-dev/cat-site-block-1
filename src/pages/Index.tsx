@@ -91,7 +91,7 @@ const PRODUCTS = [
     name: 'Арбуз',
     subtitle: 'сочный и сахарный',
     weight: '1 шт (~3 кг)',
-    price: '590 ₽',
+    price: '300 ₽',
     inStock: true,
     stockLabel: 'Есть в наличии',
     accent: '345 80% 58%',
