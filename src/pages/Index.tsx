@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const FRUITS = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/3b3a36ba-5712-449c-a4bd-bcd88bc22433.jpg';
 
@@ -73,6 +75,15 @@ const PRODUCTS = [
 ];
 
 const Index = () => {
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
+  const [sent, setSent] = useState(false);
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name.trim() && contact.trim()) setSent(true);
+  };
+
   return (
     <div className="min-h-screen bg-background tropic-bg overflow-x-hidden">
       <section className="container flex min-h-screen flex-col items-center justify-center py-16 text-center">
@@ -274,6 +285,64 @@ const Index = () => {
           ))}
         </div>
       </section>
+
+      <section className="container py-20 md:py-28">
+        <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2rem] p-8 md:p-14">
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/70 to-primary" />
+          <div className="absolute inset-0 bg-background/20" />
+
+          <div className="relative text-center text-white">
+            <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-tight md:text-5xl">
+              Хотите попробовать? Оставьте заявку — мы привезём сегодня
+            </h2>
+
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-background/30 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
+              ⏰ Следующая поставка — в пятницу. Успейте заказать до четверга 20:00
+            </div>
+
+            {sent ? (
+              <div className="mx-auto mt-10 max-w-md rounded-2xl bg-white/15 p-8 backdrop-blur-md">
+                <div className="text-5xl">🍑</div>
+                <p className="mt-4 text-xl font-bold">Спасибо, {name}!</p>
+                <p className="mt-2 text-white/90">Перезвоним вам в течение 15 минут.</p>
+              </div>
+            ) : (
+              <form onSubmit={submit} className="mx-auto mt-10 flex max-w-md flex-col gap-4">
+                <Input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Ваше имя"
+                  required
+                  className="h-14 rounded-full border-white/30 bg-white/15 px-6 text-base text-white placeholder:text-white/70 backdrop-blur-sm focus-visible:ring-white"
+                />
+                <Input
+                  value={contact}
+                  onChange={(e) => setContact(e.target.value)}
+                  placeholder="Номер телефона / Telegram"
+                  required
+                  className="h-14 rounded-full border-white/30 bg-white/15 px-6 text-base text-white placeholder:text-white/70 backdrop-blur-sm focus-visible:ring-white"
+                />
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="h-14 rounded-full bg-white text-base font-bold uppercase tracking-wide text-primary transition hover:scale-[1.03] hover:bg-white"
+                >
+                  🍑 Хочу попробовать — позвоните мне
+                </Button>
+              </form>
+            )}
+
+            <p className="mx-auto mt-6 max-w-md text-sm text-white/90">
+              Перезвоним за 15 минут · Доставка по Владивостоку · Оплата при получении или онлайн
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="container border-t border-border py-10 text-center text-sm text-muted-foreground">
+        <p className="font-display text-lg text-foreground">🥭 Тайские фрукты во Владивостоке</p>
+        <p className="mt-2">Свежие тропические фрукты прямо из Бангкока · © 2025</p>
+      </footer>
     </div>
   );
 };
