@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 const FRUITS = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/469d3c77-c84d-44ad-9e48-15e9cac0755e.png';
 
@@ -201,22 +202,19 @@ const Index = () => {
                       className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100"
                       style={{ background: `radial-gradient(circle at 50% 50%, hsl(${p.accent} / 0.25), transparent 70%)` }}
                     />
-                    <img
-                      src={p.img}
-                      alt={p.name}
-                      className={`aspect-square w-full object-cover transition duration-500 group-hover:scale-105 ${p.hoverImg ? 'group-hover:opacity-0' : ''}`}
-                    />
-                    {p.hoverImg && (
-                      <img
-                        src={p.hoverImg}
-                        alt={`${p.name} в разрезе`}
-                        className="absolute inset-0 aspect-square w-full object-cover opacity-0 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
+                    {p.hoverImg ? (
+                      <BeforeAfterSlider
+                        before={p.img}
+                        after={p.hoverImg}
+                        beforeAlt={p.name}
+                        afterAlt={`${p.name} в разрезе`}
                       />
-                    )}
-                    {p.hoverImg && (
-                      <span className="absolute bottom-3 left-3 rounded-full bg-background/80 px-3 py-1 text-xs font-bold text-foreground backdrop-blur-sm">
-                        👆 Наведи: до / после
-                      </span>
+                    ) : (
+                      <img
+                        src={p.img}
+                        alt={p.name}
+                        className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
                     )}
                     <span
                       className={`absolute right-3 top-3 rounded-full px-3 py-1 text-xs font-bold ${p.inStock ? 'bg-secondary text-secondary-foreground' : 'bg-primary text-primary-foreground'}`}
