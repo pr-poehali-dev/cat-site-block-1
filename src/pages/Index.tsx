@@ -80,7 +80,7 @@ const PRODUCTS = [
     name: 'Ананас',
     subtitle: 'медово-сладкий',
     weight: '1 шт (~1,2 кг)',
-    price: '450 ₽',
+    price: '300 ₽',
     inStock: true,
     stockLabel: 'Есть в наличии',
     accent: '45 95% 55%',
