@@ -208,6 +208,72 @@ const Index = () => {
           </Button>
         </div>
       </section>
+
+      <section className="container py-20 md:py-28">
+        <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
+          Что говорят те, кто уже <span className="text-primary text-glow-orange">пробовал</span>
+        </h2>
+
+        <div className="mx-auto mt-14 grid max-w-6xl gap-7 md:grid-cols-3">
+          {[
+            {
+              img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/c568f752-c06f-4ef9-a04e-65cb09a0b163.jpg',
+              name: 'Анна Р.',
+              role: 'менеджер, 34 года',
+              text: 'Заказала мангостины — это вообще не сравнить с тем, что продаётся в супермаркетах. Привезли за полтора часа, всё было в идеальном состоянии. Теперь беру каждую неделю.',
+            },
+            {
+              img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/33a70fbf-5a27-478a-b753-660a0b024528.jpg',
+              name: 'Михаил К.',
+              role: 'предприниматель',
+              text: 'Взял набор для офиса на корпоратив — все были в восторге. Никто не видел живого рамбутана. Рекомендую, реально свежее.',
+            },
+            {
+              img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/d9c2be8b-d714-47ba-94d2-64d8227ffc0b.jpg',
+              name: 'Ольга Т.',
+              role: '41 год',
+              text: 'Муж только вернулся из Паттайи и говорит — вкус такой же! Будем заказывать постоянно.',
+            },
+          ].map((review) => (
+            <div
+              key={review.name}
+              className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition hover:-translate-y-1.5 hover:border-primary/40"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  src={review.img}
+                  alt={review.name}
+                  className="h-14 w-14 rounded-full border-2 border-primary/50 object-cover"
+                />
+                <div>
+                  <p className="font-bold text-foreground">{review.name}</p>
+                  <p className="text-sm text-muted-foreground">{review.role}</p>
+                </div>
+              </div>
+              <div className="mt-4 flex gap-0.5 text-primary">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Icon key={i} name="Star" size={18} className="fill-primary" />
+                ))}
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">«{review.text}»</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-16 grid max-w-4xl gap-6 md:grid-cols-3">
+          {[
+            { icon: '🛒', value: '200+ заказов', label: 'за первые 3 месяца' },
+            { icon: '✈️', value: 'Еженедельные поставки', label: 'прямо из Бангкока' },
+            { icon: '⭐', value: '4.9 из 5', label: 'средняя оценка' },
+          ].map((stat) => (
+            <div key={stat.value} className="text-center">
+              <div className="text-3xl">{stat.icon}</div>
+              <p className="mt-2 font-display text-2xl font-bold text-secondary">{stat.value}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
