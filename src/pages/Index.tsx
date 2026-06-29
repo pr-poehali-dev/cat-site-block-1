@@ -32,6 +32,7 @@ const PRODUCTS = [
   },
   {
     img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/0201193b-e082-407e-8d48-509335f86c40.jpg',
+    hoverImg: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/d4943654-5cc6-4b2c-84d1-fb17917d4d68.jpg',
     emoji: '🟡',
     name: 'Манго Nam Dok Mai',
     subtitle: 'сладкое, без волокна',
@@ -203,8 +204,20 @@ const Index = () => {
                     <img
                       src={p.img}
                       alt={p.name}
-                      className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105"
+                      className={`aspect-square w-full object-cover transition duration-500 group-hover:scale-105 ${p.hoverImg ? 'group-hover:opacity-0' : ''}`}
                     />
+                    {p.hoverImg && (
+                      <img
+                        src={p.hoverImg}
+                        alt={`${p.name} в разрезе`}
+                        className="absolute inset-0 aspect-square w-full object-cover opacity-0 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
+                      />
+                    )}
+                    {p.hoverImg && (
+                      <span className="absolute bottom-3 left-3 rounded-full bg-background/80 px-3 py-1 text-xs font-bold text-foreground backdrop-blur-sm">
+                        👆 Наведи: до / после
+                      </span>
+                    )}
                     <span
                       className={`absolute right-3 top-3 rounded-full px-3 py-1 text-xs font-bold ${p.inStock ? 'bg-secondary text-secondary-foreground' : 'bg-primary text-primary-foreground'}`}
                     >
