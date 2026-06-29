@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const FRUITS = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/3b3a36ba-5712-449c-a4bd-bcd88bc22433.jpg';
 
@@ -336,6 +337,65 @@ const Index = () => {
               Перезвоним за 15 минут · Доставка по Владивостоку · Оплата при получении или онлайн
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="container py-20 md:py-28">
+        <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
+          Частые <span className="text-primary text-glow-orange">вопросы</span>
+        </h2>
+
+        <Accordion type="single" collapsible className="mx-auto mt-12 max-w-3xl space-y-4">
+          {[
+            {
+              q: 'Как часто бывают поставки?',
+              a: 'Каждую неделю авиарейсом из Бангкока. Точные даты публикуем в Telegram-канале.',
+            },
+            {
+              q: 'А фрукты точно свежие, не переспелые?',
+              a: 'Мы отбираем плоды на рынках Таиланда за 24 часа до отправки. Срок от фермы до вашего стола — 2–3 дня.',
+            },
+            {
+              q: 'Можно заказать не всё, а только один вид?',
+              a: 'Да! Минимальный заказ — одна позиция от 300 г. Или готовый набор — попробовать всего понемногу.',
+            },
+            {
+              q: 'Какая доставка по Владивостоку?',
+              a: 'Доставка по городу 150–200 ₽, либо бесплатно при заказе от 2000 ₽.',
+            },
+            {
+              q: 'Как узнавать о новых поставках первым?',
+              a: 'Подписывайтесь на Telegram-канал — там объявляем ассортимент и цены каждую неделю.',
+            },
+          ].map((item, i) => (
+            <AccordionItem
+              key={i}
+              value={`item-${i}`}
+              className="rounded-2xl border border-border bg-card px-6 data-[state=open]:border-primary/40"
+            >
+              <AccordionTrigger className="py-5 text-left text-base font-bold text-foreground hover:no-underline md:text-lg">
+                <span className="flex items-center gap-2">❓ {item.q}</span>
+              </AccordionTrigger>
+              <AccordionContent className="pb-5 text-sm leading-relaxed text-muted-foreground md:text-base">
+                {item.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+
+      <section className="container pb-20 md:pb-28">
+        <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2rem] border border-secondary/30 bg-secondary/10 p-8 text-center md:p-14">
+          <div className="text-5xl">📲</div>
+          <h2 className="mt-5 font-display text-2xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-4xl">
+            Подпишитесь на канал — и получите скидку <span className="text-secondary">10%</span> на первый заказ
+          </h2>
+          <Button
+            size="lg"
+            className="glow-green mt-8 h-14 rounded-full bg-secondary px-10 text-base font-bold uppercase tracking-wide text-secondary-foreground transition hover:scale-105 hover:bg-secondary"
+          >
+            <Icon name="Send" size={20} className="mr-2" /> Подписаться в Telegram
+          </Button>
         </div>
       </section>
 
