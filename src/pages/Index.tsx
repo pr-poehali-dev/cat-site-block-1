@@ -7,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 const FRUITS = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/469d3c77-c84d-44ad-9e48-15e9cac0755e.png';
+const JUNGLE_BG = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/a260a377-f56c-4ecd-9403-e8aa746f3d81.jpg';
 
 const PRODUCTS = [
   {
@@ -111,7 +112,13 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background tropic-bg overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden bg-background">
+      <div
+        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-fixed opacity-30"
+        style={{ backgroundImage: `url(${JUNGLE_BG})` }}
+      />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-background/70" />
+      <div className="relative z-10 tropic-bg">
       <section className="container flex min-h-screen flex-col items-center justify-center py-16 text-center">
         <span className="animate-pop-in mb-8 inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-5 py-2 text-sm font-semibold text-secondary">
           <Icon name="Plane" size={16} /> Прямые поставки из Бангкока
@@ -460,6 +467,7 @@ const Index = () => {
         <p className="font-display text-lg text-foreground">🥭 Тайские фрукты во Владивостоке</p>
         <p className="mt-2">Свежие тропические фрукты прямо из Бангкока · © 2025</p>
       </footer>
+      </div>
     </div>
   );
 };
