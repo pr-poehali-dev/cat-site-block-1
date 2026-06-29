@@ -74,6 +74,28 @@ const PRODUCTS = [
     stockLabel: 'Есть в наличии',
     accent: '25 95% 55%',
   },
+  {
+    img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/f072ab03-7f4c-4561-a154-2bf7fbce7a42.jpg',
+    emoji: '🍍',
+    name: 'Ананас',
+    subtitle: 'медово-сладкий',
+    weight: '1 шт (~1,2 кг)',
+    price: '450 ₽',
+    inStock: true,
+    stockLabel: 'Есть в наличии',
+    accent: '45 95% 55%',
+  },
+  {
+    img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/9b234a75-afd2-47f5-9184-8ad28f5c854b.jpg',
+    emoji: '🍉',
+    name: 'Арбуз',
+    subtitle: 'сочный и сахарный',
+    weight: '1 шт (~3 кг)',
+    price: '590 ₽',
+    inStock: true,
+    stockLabel: 'Есть в наличии',
+    accent: '345 80% 58%',
+  },
 ];
 
 const Index = () => {
