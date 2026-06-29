@@ -105,6 +105,7 @@ const Index = () => {
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
   const [sent, setSent] = useState(false);
+  const [lightbox, setLightbox] = useState(false);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -341,15 +342,49 @@ const Index = () => {
           Реальные эмоции наших клиентов от тайских фруктов
         </p>
 
-        <div className="mx-auto mt-12 max-w-2xl overflow-hidden rounded-2xl border border-white/10 glow-orange">
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setLightbox(true)}
+            className="group glow-orange relative aspect-[9/16] w-64 overflow-hidden rounded-3xl border border-white/10 transition hover:-translate-y-1.5"
+          >
+            <video
+              src="https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/fa2438e5-81df-40b6-9d20-9db33cf19110.mp4#t=0.5"
+              muted
+              playsInline
+              preload="metadata"
+              className="h-full w-full bg-card object-cover"
+            />
+            <div className="absolute inset-0 bg-background/30 transition group-hover:bg-background/10" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition group-hover:scale-110">
+                <Icon name="Play" size={28} className="ml-1 fill-current" />
+              </span>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 p-4 backdrop-blur-sm"
+          onClick={() => setLightbox(false)}
+        >
+          <button
+            onClick={() => setLightbox(false)}
+            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-foreground transition hover:bg-white/20"
+          >
+            <Icon name="X" size={22} />
+          </button>
           <video
             src="https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/fa2438e5-81df-40b6-9d20-9db33cf19110.mp4"
             controls
+            autoPlay
             playsInline
-            className="aspect-video w-full bg-card object-cover"
+            onClick={(e) => e.stopPropagation()}
+            className="aspect-[9/16] max-h-[88vh] w-auto rounded-2xl border border-white/10 glow-orange"
           />
         </div>
-      </section>
+      )}
 
       <section className="container py-20 md:py-28">
         <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2rem] p-8 md:p-14">
