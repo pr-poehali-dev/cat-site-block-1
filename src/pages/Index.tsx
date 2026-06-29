@@ -46,6 +46,37 @@ const Index = () => {
           <span className="flex items-center gap-1.5">📦 Доставка по Владивостоку за 1–2 часа</span>
         </div>
       </section>
+
+      <section className="container py-20 md:py-28">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-5xl">
+            Вы пробовали настоящий мангостин прямо с рынка <span className="text-primary text-glow-orange">Пхукета</span>?
+          </h2>
+          <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
+            В магазинах Владивостока — либо нет вообще, либо что-то зелёное и безвкусное, дозревшее где-то в морозилке. Это не Таиланд.
+          </p>
+          <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+            Мы привозим спелые тропические фрукты авиарейсом — без длинной логистической цепочки, без химии для «дозревания в дороге». Вы получаете именно тот вкус, который помните с отдыха.
+          </p>
+        </div>
+
+        <div className="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-3">
+          {[
+            { emoji: '🏝️', title: 'Отбираем на фермах', desc: 'Только спелые, вручную' },
+            { emoji: '✈️', title: 'Летит самолётом', desc: 'Из Бангкока во Владик' },
+            { emoji: '🚗', title: 'Доставляем за 2 часа', desc: 'Прямо к вашей двери' },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="group rounded-2xl border border-border bg-card p-8 text-center transition hover:-translate-y-1.5 hover:border-primary/50 hover:glow-orange"
+            >
+              <div className="text-5xl transition group-hover:scale-110">{item.emoji}</div>
+              <h3 className="mt-5 text-lg font-bold text-foreground">{item.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
