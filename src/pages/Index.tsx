@@ -3,6 +3,7 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const FRUITS = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/469d3c77-c84d-44ad-9e48-15e9cac0755e.png';
 
@@ -164,48 +165,53 @@ const Index = () => {
           Что привезли на <span className="text-primary text-glow-orange">этой неделе</span>
         </h2>
 
-        <div className="mx-auto mt-14 grid max-w-6xl gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {PRODUCTS.map((p) => (
-            <div
-              key={p.name}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-2"
-              style={{ boxShadow: `0 0 0 1px transparent` }}
-            >
-              <div className="relative overflow-hidden">
+        <Carousel opts={{ align: 'start', loop: true }} className="mx-auto mt-14 max-w-6xl px-12">
+          <CarouselContent className="-ml-7">
+            {PRODUCTS.map((p) => (
+              <CarouselItem key={p.name} className="pl-7 md:basis-1/2 lg:basis-1/3">
                 <div
-                  className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100"
-                  style={{ background: `radial-gradient(circle at 50% 50%, hsl(${p.accent} / 0.25), transparent 70%)` }}
-                />
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-                <span
-                  className={`absolute right-3 top-3 rounded-full px-3 py-1 text-xs font-bold ${p.inStock ? 'bg-secondary text-secondary-foreground' : 'bg-primary text-primary-foreground'}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-2"
+                  style={{ boxShadow: `0 0 0 1px transparent` }}
                 >
-                  {p.stockLabel}
-                </span>
-              </div>
+                  <div className="relative overflow-hidden">
+                    <div
+                      className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100"
+                      style={{ background: `radial-gradient(circle at 50% 50%, hsl(${p.accent} / 0.25), transparent 70%)` }}
+                    />
+                    <img
+                      src={p.img}
+                      alt={p.name}
+                      className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <span
+                      className={`absolute right-3 top-3 rounded-full px-3 py-1 text-xs font-bold ${p.inStock ? 'bg-secondary text-secondary-foreground' : 'bg-primary text-primary-foreground'}`}
+                    >
+                      {p.stockLabel}
+                    </span>
+                  </div>
 
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-bold text-foreground">
-                  {p.emoji} {p.name}
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.subtitle}</p>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-xl font-bold text-foreground">
+                      {p.emoji} {p.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{p.subtitle}</p>
 
-                <div className="mt-4 flex items-end justify-between">
-                  <span className="text-sm font-medium text-muted-foreground">{p.weight}</span>
-                  <span className="font-display text-2xl font-bold text-primary">{p.price}</span>
+                    <div className="mt-4 flex items-end justify-between">
+                      <span className="text-sm font-medium text-muted-foreground">{p.weight}</span>
+                      <span className="font-display text-2xl font-bold text-primary">{p.price}</span>
+                    </div>
+
+                    <Button className="mt-5 w-full rounded-full font-bold uppercase tracking-wide transition hover:scale-[1.03] hover:glow-orange">
+                      <Icon name="Plus" size={18} className="mr-1" /> Добавить в заказ
+                    </Button>
+                  </div>
                 </div>
-
-                <Button className="mt-5 w-full rounded-full font-bold uppercase tracking-wide transition hover:scale-[1.03] hover:glow-orange">
-                  <Icon name="Plus" size={18} className="mr-1" /> Добавить в заказ
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="border-primary/50 bg-card text-primary hover:bg-primary hover:text-primary-foreground" />
+          <CarouselNext className="border-primary/50 bg-card text-primary hover:bg-primary hover:text-primary-foreground" />
+        </Carousel>
 
         <div className="mx-auto mt-14 flex max-w-2xl flex-col items-center gap-5 rounded-2xl border border-secondary/30 bg-secondary/5 p-8 text-center">
           <p className="text-base text-muted-foreground md:text-lg">
