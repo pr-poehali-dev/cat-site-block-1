@@ -14,7 +14,7 @@ const PRODUCTS = [
     name: 'Мангостин',
     subtitle: '«Королева тропиков»',
     weight: '500 г',
-    price: '790 ₽',
+    price: '500 ₽',
     inStock: true,
     stockLabel: 'Есть в наличии',
     accent: '280 60% 60%',
