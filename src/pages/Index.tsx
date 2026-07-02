@@ -501,6 +501,12 @@ const Index = () => {
       <footer className="container border-t border-border py-10 text-center text-sm text-muted-foreground">
         <p className="font-display text-lg text-foreground">🥭 Тайские фрукты во Владивостоке</p>
         <p className="mt-2">Свежие тропические фрукты прямо из Бангкока · © 2025</p>
+        <div className="mx-auto mt-6 max-w-2xl space-y-1 border-t border-border/50 pt-6 text-xs text-muted-foreground/80">
+          <p>ИП Черников Сергей Николаевич. ИНН 250ХХХХХХХХХ, ОГРНИП 32Х25ХХХХХХХХХХ.</p>
+          <p>Юридический адрес: г. Владивосток, Приморский край, РФ.</p>
+          <p>Все материалы сайта являются информационными и не являются публичной офертой.</p>
+          <p>© ChernikovGPT / Hakni Neurosets, 2026.</p>
+        </div>
       </footer>
       </div>
     </div>
