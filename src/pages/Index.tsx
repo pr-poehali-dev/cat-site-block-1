@@ -512,10 +512,13 @@ const Index = () => {
             Подпишитесь на канал — и получите скидку <span className="text-secondary">10%</span> на первый заказ
           </h2>
           <Button
+            asChild
             size="lg"
             className="glow-green mt-8 h-14 rounded-full bg-secondary px-10 text-base font-bold uppercase tracking-wide text-secondary-foreground transition hover:scale-105 hover:bg-secondary"
           >
-            <Icon name="Send" size={20} className="mr-2" /> Подписаться в Telegram
+            <a href="https://t.me/Keranos1st" target="_blank" rel="noopener noreferrer">
+              <Icon name="Send" size={20} className="mr-2" /> Подписаться в Telegram
+            </a>
           </Button>
         </div>
       </section>
@@ -523,6 +526,14 @@ const Index = () => {
       <footer className="container border-t border-border py-10 text-center text-sm text-muted-foreground">
         <p className="font-display text-lg text-foreground">🥭 Тайские фрукты во Владивостоке</p>
         <p className="mt-2">Свежие тропические фрукты прямо из Бангкока · © 2025</p>
+        <a
+          href="https://t.me/Keranos1st"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-2 rounded-full bg-secondary/15 px-5 py-2 font-semibold text-secondary transition hover:bg-secondary/25"
+        >
+          <Icon name="Send" size={18} /> @Keranos1st
+        </a>
         <div className="mx-auto mt-6 max-w-2xl space-y-1 border-t border-border/50 pt-6 text-xs text-muted-foreground/80">
           <p>ИП Черников Сергей Николаевич. ИНН 250ХХХХХХХХХ, ОГРНИП 32Х25ХХХХХХХХХХ.</p>
           <p>Юридический адрес: г. Владивосток, Приморский край, РФ.</p>
