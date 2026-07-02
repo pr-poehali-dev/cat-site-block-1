@@ -107,12 +107,13 @@ const Index = () => {
   const [sent, setSent] = useState(false);
   const [lightbox, setLightbox] = useState(false);
   const [privacy, setPrivacy] = useState(false);
+  const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !contact.trim()) return;
+    if (!name.trim() || !contact.trim() || !agreed) return;
     setLoading(true);
     setError('');
     try {
@@ -461,11 +462,29 @@ const Index = () => {
                   required
                   className="h-14 rounded-full border-white/30 bg-white/15 px-6 text-base text-white placeholder:text-white/70 backdrop-blur-sm focus-visible:ring-white"
                 />
+                <label className="flex cursor-pointer items-start gap-3 px-1 text-left text-sm text-white/90">
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-white"
+                  />
+                  <span>
+                    Я согласен на обработку персональных данных и принимаю{' '}
+                    <button
+                      type="button"
+                      onClick={() => setPrivacy(true)}
+                      className="font-semibold underline underline-offset-2 hover:text-white"
+                    >
+                      Политику обработки персональных данных
+                    </button>
+                  </span>
+                </label>
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={loading}
-                  className="h-14 rounded-full bg-white text-base font-bold uppercase tracking-wide text-primary transition hover:scale-[1.03] hover:bg-white disabled:opacity-70"
+                  disabled={loading || !agreed}
+                  className="h-14 rounded-full bg-white text-base font-bold uppercase tracking-wide text-primary transition hover:scale-[1.03] hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {loading ? 'Отправляем…' : '🍑 Хочу попробовать — позвоните мне'}
                 </Button>
