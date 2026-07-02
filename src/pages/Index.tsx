@@ -108,6 +108,7 @@ const Index = () => {
   const [lightbox, setLightbox] = useState(false);
   const [privacy, setPrivacy] = useState(false);
   const [agreed, setAgreed] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -134,6 +135,18 @@ const Index = () => {
     }
   };
 
+  const goTo = (id: string) => {
+    setMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const NAV = [
+    { id: 'catalog', label: 'Ассортимент' },
+    { id: 'reviews', label: 'Отзывы' },
+    { id: 'faq', label: 'Вопросы' },
+    { id: 'order-form', label: 'Заказать' },
+  ];
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background">
       <a
@@ -153,8 +166,54 @@ const Index = () => {
         style={{ backgroundImage: `url(${JUNGLE_BG})` }}
       />
       <div className="pointer-events-none fixed inset-0 z-0 bg-background/70" />
-      <div className="relative z-10 tropic-bg">
-      <section className="container flex min-h-screen flex-col items-center justify-center py-16 text-center">
+
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur-md">
+        <nav className="container flex h-16 items-center justify-between">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="font-display text-base font-bold uppercase tracking-tight text-foreground md:text-lg"
+          >
+            🥭 Тайские фрукты
+          </button>
+
+          <div className="hidden items-center gap-1 md:flex">
+            {NAV.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => goTo(item.id)}
+                className="rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground transition hover:bg-muted hover:text-foreground"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-muted md:hidden"
+            aria-label="Меню"
+          >
+            <Icon name={menuOpen ? 'X' : 'Menu'} size={22} />
+          </button>
+        </nav>
+
+        {menuOpen && (
+          <div className="container flex flex-col gap-1 border-t border-border/50 py-3 md:hidden">
+            {NAV.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => goTo(item.id)}
+                className="rounded-xl px-4 py-3 text-left text-base font-semibold text-foreground transition hover:bg-muted"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <div className="relative z-10 tropic-bg pt-16">
+      <section className="container flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-16 text-center">
         <span className="animate-pop-in mb-8 inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-5 py-2 text-sm font-semibold text-secondary">
           <Icon name="Plane" size={16} /> Прямые поставки из Бангкока
         </span>
@@ -229,7 +288,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="container py-20 md:py-28">
+      <section id="catalog" className="container scroll-mt-20 py-20 md:py-28">
         <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
           Что привезли на <span className="text-primary text-glow-orange">этой неделе</span>
         </h2>
@@ -308,7 +367,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="container py-20 md:py-28">
+      <section id="reviews" className="container scroll-mt-20 py-20 md:py-28">
         <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
           Что говорят те, кто уже <span className="text-primary text-glow-orange">пробовал</span>
         </h2>
@@ -499,7 +558,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="container py-20 md:py-28">
+      <section id="faq" className="container scroll-mt-20 py-20 md:py-28">
         <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
           Частые <span className="text-primary text-glow-orange">вопросы</span>
         </h2>
