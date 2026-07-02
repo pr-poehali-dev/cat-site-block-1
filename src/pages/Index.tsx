@@ -101,6 +101,49 @@ const PRODUCTS = [
   },
 ];
 
+const REVIEWS = [
+  {
+    img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/c568f752-c06f-4ef9-a04e-65cb09a0b163.jpg',
+    name: 'Анна Р.',
+    role: 'менеджер, 34 года',
+    text: 'Заказала мангостины — это вообще не сравнить с тем, что продаётся в супермаркетах. Привезли за полтора часа, всё было в идеальном состоянии. Теперь беру каждую неделю.',
+  },
+  {
+    img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/33a70fbf-5a27-478a-b753-660a0b024528.jpg',
+    name: 'Михаил К.',
+    role: 'предприниматель',
+    text: 'Взял набор для офиса на корпоратив — все были в восторге. Никто не видел живого рамбутана. Рекомендую, реально свежее.',
+  },
+  {
+    img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/d9c2be8b-d714-47ba-94d2-64d8227ffc0b.jpg',
+    name: 'Ольга Т.',
+    role: '41 год',
+    text: 'Муж только вернулся из Паттайи и говорит — вкус такой же! Будем заказывать постоянно.',
+  },
+];
+
+const ReviewCard = ({ review }: { review: (typeof REVIEWS)[number] }) => (
+  <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition hover:-translate-y-1.5 hover:border-primary/40 md:p-7">
+    <div className="flex items-center gap-4">
+      <img
+        src={review.img}
+        alt={review.name}
+        className="h-14 w-14 rounded-full border-2 border-primary/50 object-cover"
+      />
+      <div>
+        <p className="font-bold text-foreground">{review.name}</p>
+        <p className="text-sm text-muted-foreground">{review.role}</p>
+      </div>
+    </div>
+    <div className="mt-4 flex gap-0.5 text-primary">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Icon key={i} name="Star" size={18} className="fill-primary" />
+      ))}
+    </div>
+    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">«{review.text}»</p>
+  </div>
+);
+
 const Index = () => {
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
@@ -218,17 +261,17 @@ const Index = () => {
           <Icon name="Plane" size={16} /> Прямые поставки из Бангкока
         </span>
 
-        <div className="relative mb-10 flex justify-center">
+        <div className="relative mb-8 flex justify-center md:mb-10">
           <div className="absolute inset-0 m-auto h-64 w-64 rounded-full bg-primary/30 blur-[90px]" />
           <div className="absolute inset-0 m-auto h-72 w-72 rounded-full bg-secondary/20 blur-[110px]" />
           <img
             src={FRUITS}
             alt="Тайские фрукты: мангостин, рамбутан, питахайя"
-            className="animate-float relative w-[26rem] max-w-full rounded-3xl border border-white/10 glow-orange"
+            className="animate-float relative w-64 max-w-full rounded-3xl border border-white/10 glow-orange sm:w-80 md:w-[26rem]"
           />
         </div>
 
-        <h1 className="animate-pop-in font-display text-4xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">
+        <h1 className="animate-pop-in font-display text-3xl font-bold uppercase leading-tight tracking-tight text-foreground sm:text-4xl md:text-6xl lg:text-7xl">
           Тайские фрукты — прямо из <span className="text-primary text-glow-orange">Бангкока</span> во <span className="text-secondary">Владивосток</span>
         </h1>
 
@@ -257,9 +300,9 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="container py-20 md:py-28">
+      <section className="container py-14 md:py-28">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-5xl">
+          <h2 className="font-display text-2xl font-bold uppercase leading-tight tracking-tight text-foreground sm:text-3xl md:text-5xl">
             Вы пробовали настоящий мангостин прямо с рынка <span className="text-primary text-glow-orange">Пхукета</span>?
           </h2>
           <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -288,8 +331,8 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="catalog" className="container scroll-mt-20 py-20 md:py-28">
-        <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
+      <section id="catalog" className="container scroll-mt-20 py-14 md:py-28">
+        <h2 className="text-center font-display text-2xl font-bold uppercase tracking-tight text-foreground sm:text-3xl md:text-5xl">
           Что привезли на <span className="text-primary text-glow-orange">этой неделе</span>
         </h2>
 
@@ -367,56 +410,26 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="reviews" className="container scroll-mt-20 py-20 md:py-28">
-        <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
+      <section id="reviews" className="container scroll-mt-20 py-14 md:py-28">
+        <h2 className="text-center font-display text-2xl font-bold uppercase tracking-tight text-foreground sm:text-3xl md:text-5xl">
           Что говорят те, кто уже <span className="text-primary text-glow-orange">пробовал</span>
         </h2>
 
-        <div className="mx-auto mt-14 grid max-w-6xl gap-7 md:grid-cols-3">
-          {[
-            {
-              img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/c568f752-c06f-4ef9-a04e-65cb09a0b163.jpg',
-              name: 'Анна Р.',
-              role: 'менеджер, 34 года',
-              text: 'Заказала мангостины — это вообще не сравнить с тем, что продаётся в супермаркетах. Привезли за полтора часа, всё было в идеальном состоянии. Теперь беру каждую неделю.',
-            },
-            {
-              img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/33a70fbf-5a27-478a-b753-660a0b024528.jpg',
-              name: 'Михаил К.',
-              role: 'предприниматель',
-              text: 'Взял набор для офиса на корпоратив — все были в восторге. Никто не видел живого рамбутана. Рекомендую, реально свежее.',
-            },
-            {
-              img: 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/d9c2be8b-d714-47ba-94d2-64d8227ffc0b.jpg',
-              name: 'Ольга Т.',
-              role: '41 год',
-              text: 'Муж только вернулся из Паттайи и говорит — вкус такой же! Будем заказывать постоянно.',
-            },
-          ].map((review) => (
-            <div
-              key={review.name}
-              className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition hover:-translate-y-1.5 hover:border-primary/40"
-            >
-              <div className="flex items-center gap-4">
-                <img
-                  src={review.img}
-                  alt={review.name}
-                  className="h-14 w-14 rounded-full border-2 border-primary/50 object-cover"
-                />
-                <div>
-                  <p className="font-bold text-foreground">{review.name}</p>
-                  <p className="text-sm text-muted-foreground">{review.role}</p>
-                </div>
-              </div>
-              <div className="mt-4 flex gap-0.5 text-primary">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Icon key={i} name="Star" size={18} className="fill-primary" />
-                ))}
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">«{review.text}»</p>
-            </div>
+        <div className="mx-auto mt-12 hidden max-w-6xl gap-7 md:mt-14 md:grid md:grid-cols-3">
+          {REVIEWS.map((review) => (
+            <ReviewCard key={review.name} review={review} />
           ))}
         </div>
+
+        <Carousel opts={{ align: 'start', loop: true }} className="mt-10 md:hidden">
+          <CarouselContent className="-ml-4">
+            {REVIEWS.map((review) => (
+              <CarouselItem key={review.name} className="basis-[88%] pl-4">
+                <ReviewCard review={review} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
 
         <div className="mx-auto mt-16 grid max-w-4xl gap-6 md:grid-cols-3">
           {[
@@ -433,8 +446,8 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="container py-20 md:py-28">
-        <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
+      <section className="container py-14 md:py-28">
+        <h2 className="text-center font-display text-2xl font-bold uppercase tracking-tight text-foreground sm:text-3xl md:text-5xl">
           Видео-<span className="text-primary text-glow-orange">отзывы</span>
         </h2>
         <p className="mx-auto mt-3 max-w-md text-center text-muted-foreground">
@@ -485,13 +498,13 @@ const Index = () => {
         </div>
       )}
 
-      <section id="order-form" className="container scroll-mt-8 py-20 md:py-28">
+      <section id="order-form" className="container scroll-mt-8 py-14 md:py-28">
         <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2rem] p-8 md:p-14">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/70 to-primary" />
           <div className="absolute inset-0 bg-background/20" />
 
           <div className="relative text-center text-white">
-            <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-tight md:text-5xl">
+            <h2 className="font-display text-2xl font-bold uppercase leading-tight tracking-tight sm:text-3xl md:text-5xl">
               Хотите попробовать? Оставьте заявку — мы привезём сегодня
             </h2>
 
@@ -558,8 +571,8 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="faq" className="container scroll-mt-20 py-20 md:py-28">
-        <h2 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
+      <section id="faq" className="container scroll-mt-20 py-14 md:py-28">
+        <h2 className="text-center font-display text-2xl font-bold uppercase tracking-tight text-foreground sm:text-3xl md:text-5xl">
           Частые <span className="text-primary text-glow-orange">вопросы</span>
         </h2>
 
@@ -602,7 +615,7 @@ const Index = () => {
         </Accordion>
       </section>
 
-      <section className="container pb-20 md:pb-28">
+      <section className="container pb-14 md:pb-28">
         <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2rem] border border-secondary/30 bg-secondary/10 p-8 text-center md:p-14">
           <div className="text-5xl">📲</div>
           <h2 className="mt-5 font-display text-2xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-4xl">
