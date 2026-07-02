@@ -106,10 +106,30 @@ const Index = () => {
   const [contact, setContact] = useState('');
   const [sent, setSent] = useState(false);
   const [lightbox, setLightbox] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name.trim() && contact.trim()) setSent(true);
+    if (!name.trim() || !contact.trim()) return;
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch(
+        'https://functions.poehali.dev/f5c1a839-fd94-496e-aa03-a376609cbefc',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name.trim(), contact: contact.trim() }),
+        },
+      );
+      if (!res.ok) throw new Error('fail');
+      setSent(true);
+    } catch {
+      setError('Не удалось отправить заявку. Попробуйте ещё раз.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -425,10 +445,12 @@ const Index = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="h-14 rounded-full bg-white text-base font-bold uppercase tracking-wide text-primary transition hover:scale-[1.03] hover:bg-white"
+                  disabled={loading}
+                  className="h-14 rounded-full bg-white text-base font-bold uppercase tracking-wide text-primary transition hover:scale-[1.03] hover:bg-white disabled:opacity-70"
                 >
-                  🍑 Хочу попробовать — позвоните мне
+                  {loading ? 'Отправляем…' : '🍑 Хочу попробовать — позвоните мне'}
                 </Button>
+                {error && <p className="text-center text-sm text-white">{error}</p>}
               </form>
             )}
 

@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "Успешное сохранение заявки",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "Тест", "contact": "@test_tg"},
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Ошибка при пустых полях",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "", "contact": ""},
+      "expectedStatus": 400
+    },
+    {
+      "name": "CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}
