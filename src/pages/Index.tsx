@@ -178,6 +178,9 @@ const Index = () => {
         <div className="animate-pop-in mt-10" style={{ animationDelay: '0.2s' }}>
           <Button
             size="lg"
+            onClick={() =>
+              document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' })
+            }
             className="glow-orange h-14 rounded-full px-10 text-lg font-bold uppercase tracking-wide transition hover:scale-105"
           >
             🛒 Заказать сейчас
@@ -421,7 +424,7 @@ const Index = () => {
         </div>
       )}
 
-      <section className="container py-20 md:py-28">
+      <section id="order-form" className="container scroll-mt-8 py-20 md:py-28">
         <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2rem] p-8 md:p-14">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/70 to-primary" />
           <div className="absolute inset-0 bg-background/20" />
