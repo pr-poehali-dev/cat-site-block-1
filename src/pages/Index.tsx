@@ -285,7 +285,7 @@ const Index = () => {
             onClick={() =>
               document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' })
             }
-            className="glow-orange h-14 rounded-full px-10 text-lg font-bold uppercase tracking-wide transition hover:scale-105"
+            className="glow-orange h-auto min-h-14 whitespace-normal rounded-full px-8 py-3 text-base font-bold uppercase leading-tight tracking-wide transition hover:scale-105 md:px-10 md:text-lg"
           >
             🛒 Заказать сейчас
           </Button>
@@ -401,10 +401,10 @@ const Index = () => {
             asChild
             size="lg"
             variant="outline"
-            className="glow-green rounded-full border-secondary/60 px-8 font-bold text-secondary hover:bg-secondary hover:text-secondary-foreground"
+            className="glow-green h-auto min-h-12 whitespace-normal rounded-full border-secondary/60 px-8 py-2.5 font-bold text-secondary hover:bg-secondary hover:text-secondary-foreground"
           >
             <a href="https://t.me/Keranos1st" target="_blank" rel="noopener noreferrer">
-              <Icon name="Send" size={18} className="mr-2" /> Подписаться на канал
+              <Icon name="Send" size={18} className="mr-2 shrink-0" /> Подписаться на канал
             </a>
           </Button>
         </div>
@@ -556,7 +556,7 @@ const Index = () => {
                   type="submit"
                   size="lg"
                   disabled={loading || !agreed}
-                  className="h-14 rounded-full bg-white text-base font-bold uppercase tracking-wide text-primary transition hover:scale-[1.03] hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
+                  className="h-auto min-h-14 w-full whitespace-normal rounded-full bg-white px-6 py-3 text-center text-sm font-bold uppercase leading-tight tracking-wide text-primary transition hover:scale-[1.03] hover:bg-white disabled:cursor-not-allowed disabled:opacity-70 sm:text-base"
                 >
                   {loading ? 'Отправляем…' : '🍑 Хочу попробовать — позвоните мне'}
                 </Button>
@@ -624,10 +624,10 @@ const Index = () => {
           <Button
             asChild
             size="lg"
-            className="glow-green mt-8 h-14 rounded-full bg-secondary px-10 text-base font-bold uppercase tracking-wide text-secondary-foreground transition hover:scale-105 hover:bg-secondary"
+            className="glow-green mt-8 h-auto min-h-14 max-w-full whitespace-normal rounded-full bg-secondary px-8 py-3 text-sm font-bold uppercase leading-tight tracking-wide text-secondary-foreground transition hover:scale-105 hover:bg-secondary md:px-10 md:text-base"
           >
             <a href="https://t.me/Keranos1st" target="_blank" rel="noopener noreferrer">
-              <Icon name="Send" size={20} className="mr-2" /> Подписаться в Telegram
+              <Icon name="Send" size={20} className="mr-2 shrink-0" /> Подписаться в Telegram
             </a>
           </Button>
         </div>
