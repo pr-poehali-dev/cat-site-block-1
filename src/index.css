@@ -99,7 +99,7 @@
     @apply bg-background text-foreground;
     font-family: "Montserrat", sans-serif;
     cursor:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ctext y='28' font-size='28'%3E%F0%9F%A5%AD%3C/text%3E%3C/svg%3E")
+      url("https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/3c66a357-7601-47d7-aaf3-459aa0427010.jpg")
         4 4,
       auto;
   }
@@ -109,7 +109,7 @@
   label,
   summary {
     cursor:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ctext y='28' font-size='28'%3E%F0%9F%A5%AD%3C/text%3E%3C/svg%3E")
+      url("https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/3c66a357-7601-47d7-aaf3-459aa0427010.jpg")
         4 4,
       pointer;
   }
