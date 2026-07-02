@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
-const FRUITS = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/25bf881c-3500-47ac-9a6e-ff8784f88823.jpg';
+const FRUITS = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/bucket/469d3c77-c84d-44ad-9e48-15e9cac0755e.png';
 const JUNGLE_BG = 'https://cdn.poehali.dev/projects/2b19800d-1a03-4ba4-a8f9-d77388d88a2b/files/a260a377-f56c-4ecd-9403-e8aa746f3d81.jpg';
 
 const PRODUCTS = [
