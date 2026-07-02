@@ -134,6 +134,18 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background">
+      <a
+        href="https://t.me/Keranos1st"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Написать в Telegram"
+        className="glow-green group fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-secondary text-secondary-foreground shadow-lg transition hover:scale-110"
+      >
+        <Icon name="Send" size={26} />
+        <span className="pointer-events-none absolute right-16 whitespace-nowrap rounded-lg bg-secondary px-3 py-1.5 text-sm font-bold text-secondary-foreground opacity-0 shadow-md transition group-hover:opacity-100">
+          Написать в Telegram
+        </span>
+      </a>
       <div
         className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-fixed opacity-30"
         style={{ backgroundImage: `url(${JUNGLE_BG})` }}
