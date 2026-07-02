@@ -376,7 +376,7 @@ const Index = () => {
                     </h3>
                     <p className="mt-1 text-sm text-muted-foreground">{p.subtitle}</p>
 
-                    <div className="mt-4 flex items-end justify-between">
+                    <div className="mt-auto flex items-end justify-between pt-4">
                       <span className="text-sm font-medium text-muted-foreground">{p.weight}</span>
                       <span className="font-display text-2xl font-bold text-primary">{p.price}</span>
                     </div>
