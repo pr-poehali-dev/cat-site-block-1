@@ -1,11 +1,32 @@
 import json
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
 import psycopg2
+
+
+def send_email(name: str, contact: str) -> None:
+    smtp_user = os.environ.get('SMTP_USER')
+    smtp_password = os.environ.get('SMTP_PASSWORD')
+    if not smtp_user or not smtp_password:
+        return
+
+    recipient = 'keranos@mail.ru'
+    text = f'Новая заявка с сайта!\n\nИмя: {name}\nКонтакт: {contact}'
+    msg = MIMEText(text, 'plain', 'utf-8')
+    msg['Subject'] = Header('Новая заявка с сайта — Тайские фрукты', 'utf-8')
+    msg['From'] = smtp_user
+    msg['To'] = recipient
+
+    with smtplib.SMTP_SSL('smtp.mail.ru', 465) as server:
+        server.login(smtp_user, smtp_password)
+        server.sendmail(smtp_user, [recipient], msg.as_string())
 
 
 def handler(event: dict, context) -> dict:
     '''
-    Business: Принимает заявки из формы обратной связи и сохраняет их в базу данных
+    Business: Принимает заявки из формы обратной связи, сохраняет их в базу данных и отправляет на почту
     Args: event - dict с httpMethod, body (name, contact); context - объект с request_id
     Returns: HTTP-ответ со статусом сохранения заявки
     '''
@@ -52,6 +73,11 @@ def handler(event: dict, context) -> dict:
     conn.commit()
     cur.close()
     conn.close()
+
+    try:
+        send_email(name, contact)
+    except Exception as e:
+        print(f'Email send failed: {e}')
 
     return {
         'statusCode': 200,
