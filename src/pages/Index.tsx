@@ -291,11 +291,14 @@ const Index = () => {
             🔄 Ассортимент обновляется каждую неделю — подпишитесь в Telegram, чтобы узнавать первыми
           </p>
           <Button
+            asChild
             size="lg"
             variant="outline"
             className="glow-green rounded-full border-secondary/60 px-8 font-bold text-secondary hover:bg-secondary hover:text-secondary-foreground"
           >
-            <Icon name="Send" size={18} className="mr-2" /> Подписаться на канал
+            <a href="https://t.me/Keranos1st" target="_blank" rel="noopener noreferrer">
+              <Icon name="Send" size={18} className="mr-2" /> Подписаться на канал
+            </a>
           </Button>
         </div>
       </section>
