@@ -4,11 +4,41 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+User-agent: YandexBot
+Allow: /
+
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
+# AI-ассистенты (GEO-оптимизация)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: *
 Allow: /
+
+Sitemap: https://xn--80ahdgeoo3d.xn--p1ai/sitemap.xml
